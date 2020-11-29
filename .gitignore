@@ -11,3 +11,6 @@ web-build/
 
 # macOS
 .DS_Store
+
+#Agregar el enviroment para no darle seguimiento
+enviroment.js
