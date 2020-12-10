@@ -25,11 +25,12 @@ const getClass = (setClassFunc) => {
 };
 
 //Insertar clases
-const insertClass = (class_, successFunc) => {
+const insertClass = (name, score, details, successFunc) => {
     db.transaction((tx) => {
-        tx.executeSql("insert into class (class, name, score, details) values (?,?,?,?)", [
-            class_,
-            "Nueva",
+        tx.executeSql("insert into class (name, score, details) values (?,?,?,?)", [
+            name,
+            score,
+            details,
         ]);
     },
     (_t, error) => {
@@ -82,9 +83,32 @@ const setupDatabaseTableAsync = async () => {
     });
   };
 
+  const setupNotesAsync = async () => {
+    return new Promise((resolve, reject) => {
+      db.transaction(
+        (tx) => {
+          tx.executeSql("insert into class (name, score, details) values (?,?,?,?)", [
+            "Matematicas",
+            "98",
+            "new",
+          ]);
+        },
+        (_t, error) => {
+          console.log("Error al momento de insertar los valores por defecto");
+          console.log(error);
+          reject(error);
+        },
+        (_t, success) => {
+          resolve(success);
+        }
+      );
+    });
+  };
+
 export const database = {
     getClass,
     insertClass,
     dropDatabaseTableAsync,
     setupDatabaseTableAsync,
+    setupNotesAsync,
 };
