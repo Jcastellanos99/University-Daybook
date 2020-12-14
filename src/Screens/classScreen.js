@@ -1,44 +1,93 @@
-import { Container, Content, Fab, List, ListItem, Icon } from "native-base";
-import React, { useContext, useEffect, useState } from "react";
-import {StyleSheet, View, Text} from "react-native";
+import {Container, 
+        Content, 
+        Fab, 
+        List, 
+        ListItem, 
+        Icon, 
+        Body,
+        Card,
+        CardItem,
+        Segment
+        } from "native-base";
+import React, {useContext, 
+               useEffect, 
+               useState } from "react";
+import {StyleSheet, 
+        View, 
+        Text,
+        Dimensions} from "react-native";
 
 
 //Importar el contexto de las notas
-import {ClassContext} from "../context/classContext";
+import {AsignaturaContext} from "../context/classContext";
+
+const { width, height} = Dimensions.get("window");
 
 
-const ClassScreen=({navigation}) => {
-    const {class_} = useContext(ClassContext);
+
+const ClassScreen= ({ navigation }) => {
+    const {asignaturas} = useContext(AsignaturaContext);
+
 
     return(
-        <Container>
+        <Container style={styles.container}>
             <Content>
                 <List>
-                    {class_
-                    ? class_.map((_class_) =>(
-                        <ListItem key={class_.idClass.toString()}>
-                            <Text>{class_._class_}</Text>
+                    {asignaturas
+                    ? asignaturas.map((asignatura) =>(
+                        <ListItem key={asignatura.idClass.toString()}>
+                            <Card style={styles.card}>
+                                <Segment style={styles.segment}>
+                                    <CardItem style={{borderRadius:20, backgroundColor:"#rgba(38, 196, 164, 0.70)", width:width*0.10}}>
+
+                                    </CardItem>
+                                    <CardItem style={styles.cardItem}>
+                                        <Text style={styles.resumen}>{asignatura.name}</Text>
+                                    </CardItem> 
+                                </Segment>                             
+                            </Card>
                         </ListItem>
                     ))
                 : null}
-                </List>
-                <Fab 
-                    active={true}
-                    position="bottomRight"
-                    style={{backgroundColor: "#ff0023"}}
-                    direction="up"
-                    onPress={() =>{
-                        navigation.navigate("classCreate")
-                    }}>
-                        <Icon name="plus"/>
-                    </Fab>
+                </List>               
             </Content>
         </Container>
     );
 }
 
 const styles = StyleSheet.create({
-
+    card:
+    {
+        width:width*0.90, 
+        height:height*0.15,
+        backgroundColor: "#rgba(38, 196, 164, 0.89)",
+        borderRadius:20,
+        marginLeft:width*0.01, 
+        marginRight:width*0.01,
+    },
+    cardItem:
+    {
+        backgroundColor: "#fff",
+        flex:1,  
+        borderRadius:20,
+        borderBottomColor: "#fff",
+    },
+    segment:
+    {
+        backgroundColor: "#fff",
+        flex:1,  
+        borderRadius:20,
+        borderBottomColor: "#fff",
+    },
+    container:{
+        backgroundColor : "#F0ECEC",
+    },
+    resumen:
+    {
+        fontSize: 28,
+        color: "#000",
+       
+    },
 })
 
 
