@@ -18,7 +18,7 @@ const ScheduleScreen=({navigation}) => {
           allowRangeSelection={true}
           minDate={minDate}
           maxDate={maxDate}
-          weekdays={['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa', 'Do']}
+          weekdays={['Lun', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa', 'Do']}
           months={['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']}
           previousTitle="Anterior"
           nextTitle="Siguiente"
