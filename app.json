@@ -4,9 +4,9 @@
     "slug": "University-Daybook",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/pantalla_splash.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/pantalla_splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
