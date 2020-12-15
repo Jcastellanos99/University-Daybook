@@ -32,7 +32,7 @@ export default function App() {
         <Stack.Screen name="homeScreen" component={HomeScreen} options={{headerStyle: {backgroundColor: "#12B191"}}} />
         <Stack.Screen name="Agenda" component={AgendaScreen} />
         <Stack.Screen name="Horario" component={ScheduleScreen} options={{headerStyle: {backgroundColor: "#12B191"}}}  />
-        <Stack.Screen name="Calcular" component={CalculateScreen} />
+        <Stack.Screen name="Calcular" component={CalculateScreen} options={{headerStyle: {backgroundColor: "#12B191"}}}/>
         <Stack.Screen name="Asignatura" component={ClassScreen} options={{headerStyle: {backgroundColor: "#12B191"}}}  />
         <Stack.Screen name="Tareas" component={HomeworkScreen} />
         <Stack.Screen name="Examenes" component={TestScreen} />
