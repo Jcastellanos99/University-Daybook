@@ -57,7 +57,6 @@ const ClassScreen= ({ navigation }) => {
                 <List>
                     {asignaturas
                     ? asignaturas.map((asignatura) =>(
-                        <TouchableOpacity onPress={(nextPage)}>
                         <ListItem key={asignatura.idClass.toString()}>
                             <Card style={styles.card}>
                                 <CardItem style={styles.cardItem1}>
@@ -68,8 +67,7 @@ const ClassScreen= ({ navigation }) => {
                                     </CardItem>                             
                             </Card>
                         </ListItem>
-                        </TouchableOpacity>
-                    ))
+                     ))
                 : null}
                 </List>               
             </Content>
