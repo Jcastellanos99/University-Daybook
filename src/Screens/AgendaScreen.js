@@ -37,7 +37,7 @@ const AgendaScreen=({navigation}) => {
             <Segment style={styles.segment}> 
             <Button rounded onPress={() => {navigation.navigate("Tareas")}} style={styles.button}>       
                     <Text style={styles.text}>
-                        Tareas
+                        Agregar Tareas
                         </Text>	                    
                 </Button>	                
                 <Button rounded onPress={() => {navigation.navigate("Examenes")}} style={styles.button}>                
@@ -50,10 +50,9 @@ const AgendaScreen=({navigation}) => {
                 <List>
                     {homeworks
                     ? homeworks.map((homework) =>(
-                        <TouchableOpacity onPress={(nextPage)}>
                         <ListItem key={homework.idtarea.toString()}>
                             <Card style={styles.card}>
-                                <Segment style={styles.segment}>
+                                <Segment style={styles.segment2}>
                                     <CardItem style={{borderRadius:20, backgroundColor:"#rgba(38, 196, 164, 0.70)", width:width*0.10}}>
 
                                     </CardItem>
@@ -63,7 +62,6 @@ const AgendaScreen=({navigation}) => {
                                 </Segment>                             
                             </Card>
                         </ListItem>
-                        </TouchableOpacity>
                     ))
                 : null}
                 </List>               
