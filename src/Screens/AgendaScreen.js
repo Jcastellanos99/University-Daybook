@@ -35,7 +35,7 @@ const AgendaScreen=({navigation}) => {
     return(
         <Container style={styles.container}>
             <Segment style={styles.segment}> 
-            <Button rounded onPress={() => {navigation.navigate("Tareas")}} style={styles.button}>       
+            <Button rounded onPress={() => {navigation.navigate("Agregar Tarea")}} style={styles.button}>       
                     <Text style={styles.text}>
                         Agregar Tareas
                         </Text>	                    
