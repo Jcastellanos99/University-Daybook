@@ -1,4 +1,4 @@
-import { Card, CardItem, Input, Button } from "native-base";
+import { Card, CardItem, Input, Button, Container, Content } from "native-base";
 import React, { useEffect, useState, useContext } from "react";
 import {StyleSheet, View, Text, Dimensions} from "react-native";
 
@@ -35,54 +35,41 @@ const AddClassScreen=({navigation}) => {
     }, [name]);
 
 
-    const handlerNewAsignatura = async () => {
-        // Validar que la asignatura tiene valor
-        if (name) {
-          await addNewAsignatura(name, score, details, refreshNotes);
-          console.log(name);
-          console.log(score);
-          console.log(details);
-    
-          // Regresar a la pantalla anterior
-          navigation.goBack();
-        } else {
-          setError(true);
-        }
-      };
-
-   
-
-
-
     return(
-        <Card style={styles.card}>
-            <CardItem style={styles.cardtext}>
-            <Text style={styles.titulo}>Datos Basicos</Text>
-            </CardItem>
-            <CardItem style={styles.cardtext}>
-                <Text style={styles.text}>Asignatura</Text>
-            </CardItem>
-            <CardItem style={styles.cardinput}>
-                <Input  placeholder="Nombre de la asignatura" value={name} onChangeText={setName} />
-            </CardItem>
-            <CardItem style={styles.cardtext}>
-                <Text style={styles.text}>Nota</Text>
-            </CardItem>
-            <CardItem style={styles.cardinput}>
-                <Input  placeholder="Nota que espera sacar" value={score} onChangeText={setScore} />
-            </CardItem>
-            <CardItem style={styles.cardtext}>
-                <Text style={styles.text}>Detalles</Text>
-            </CardItem>
-            <CardItem style={styles.cardinput}>
-                <Input placeholder="Detalles" value={details} onChangeText={setDetails} />
-            </CardItem>
-            <CardItem style={styles.cardItem}>
-                <Button rounded style={styles.MostrarButton} onPress={insertarAsignatura}>
-                    <Text style={styles.cardText}>Guardar</Text>
-                </Button>
-            </CardItem>
-        </Card>
+        <Container style={styles.container}>
+            <Content>
+                 <Card style={styles.card}>
+                    <CardItem style={styles.cardtext}>
+                    <Text style={styles.titulo}>Datos Basicos</Text>
+                    </CardItem>
+                    <CardItem style={styles.cardtext}>
+                        <Text style={styles.text}>Asignatura</Text>
+                    </CardItem>
+                    <CardItem style={styles.cardinput}>
+                        <Input  placeholder="Nombre de la asignatura" value={name} onChangeText={setName} />
+                    </CardItem>
+                    <CardItem style={styles.cardtext}>
+                        <Text style={styles.text}>Nota</Text>
+                    </CardItem>
+                    <CardItem style={styles.cardinput}>
+                        <Input  placeholder="Nota que espera sacar" value={score} onChangeText={setScore} />
+                    </CardItem>
+                    <CardItem style={styles.cardtext}>
+                        <Text style={styles.text}>Detalles</Text>
+                    </CardItem>
+                    <CardItem style={styles.cardinput}>
+                        <Input placeholder="Detalles" value={details} onChangeText={setDetails} />
+                    </CardItem>
+                    <CardItem style={styles.cardItem}>
+                        <Button rounded style={styles.MostrarButton} onPress={insertarAsignatura}>
+                            <Text style={styles.cardText}>Guardar</Text>
+                        </Button>
+                    </CardItem>
+                </Card>
+
+            </Content>
+        </Container>
+        
     );
 }
 
@@ -154,6 +141,9 @@ const styles = StyleSheet.create({
         marginRight: width * -0.04,
         width: width,
         height: height * 0.05,
+    },
+    container:{
+        backgroundColor : "#F0ECEC",
     },
 })
 
