@@ -29,7 +29,7 @@ const HomeScreen=({navigation}) => {
                         <Button rounded onPress={() => {navigation.navigate("Tareas")}} style={styles.button}>
                             <Icon style={styles.icon} name="book"/> 
                         </Button>
-                        <Button rounded onPress={() => {navigation.navigate("Horario")}} style={styles.button}>
+                        <Button rounded onPress={() => {navigation.navigate("Calendario")}} style={styles.button}>
                             <Icon style={styles.icon} name="calendar"/>
                         </Button>
                     </Segment>

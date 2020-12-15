@@ -57,7 +57,7 @@ export default function App({navigation}) {
         <Stack.Screen name="homeScreen" component={HomeScreen} 
         options={{headerTitle: props=> <LogoTitle {...props}/>, headerStyle: {backgroundColor: "#12B191"}, headerTintColor: "#fff"}} />
         <Stack.Screen name="Tareas" component={AgendaScreen} options={{headerStyle: {backgroundColor: "#12B191"}, headerTintColor: "#fff"}}/>
-        <Stack.Screen name="Horario" component={ScheduleScreen} options={{headerStyle: {backgroundColor: "#12B191"}, headerTintColor: "#fff"}}  />
+        <Stack.Screen name="Calendario" component={ScheduleScreen} options={{headerStyle: {backgroundColor: "#12B191"}, headerTintColor: "#fff"}}  />
         <Stack.Screen name="Calcular" component={CalculateScreen} options={{headerStyle: {backgroundColor: "#12B191"}, headerTintColor: "#fff"}}/>
         <Stack.Screen name="Asignatura" component={ClassScreen} options={{headerStyle: {backgroundColor: "#12B191"}, headerTintColor: "#fff"}}/>
         <Stack.Screen name="Examenes" component={TestScreen} options={{headerStyle: {backgroundColor: "#12B191"}, headerTintColor: "#fff"}}/>
