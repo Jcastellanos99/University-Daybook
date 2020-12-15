@@ -52,14 +52,15 @@ const AgendaScreen=({navigation}) => {
                     ? homeworks.map((homework) =>(
                         <ListItem key={homework.idtarea.toString()}>
                             <Card style={styles.card}>
-                                <Segment style={styles.segment2}>
-                                    <CardItem style={{borderRadius:20, backgroundColor:"#rgba(38, 196, 164, 0.70)", width:width*0.10}}>
-
+                                    <CardItem style={styles.cardItem1}>
+                                            <Text style={styles.resumen}>{homework.name }</Text>
                                     </CardItem>
-                                    <CardItem style={styles.cardItem}>
-                                        <Text style={styles.resumen}>{homework.name}</Text>
+                                    <CardItem style={styles.cardItem2}>
+                                            <Text style={styles.resumenAdd}>{homework.clas }</Text>
                                     </CardItem> 
-                                </Segment>                             
+                                    <CardItem style={styles.cardItem3}>
+                                            <Text style={styles.resumenAdd}>{homework.date }</Text>
+                                    </CardItem>                              
                             </Card>
                         </ListItem>
                     ))
@@ -97,12 +98,34 @@ const styles = StyleSheet.create({
         marginLeft:width*0.01, 
         marginRight:width*0.01,
     },
-    cardItem:
+    cardItem1:
     {
         backgroundColor: "#fff",
-        flex:1,  
-        borderRadius:20,
-        borderBottomColor: "#fff",
+        height:height*0.05,
+        width:width*0.8,
+        marginLeft:width*0.1,
+        borderTopRightRadius:20,
+       
+        
+    },
+    cardItem2:
+    {
+        backgroundColor: "#fff",
+        height:height*0.05,
+        width:width*0.8,
+        marginLeft:width*0.1,
+        
+        
+    },
+    cardItem3:
+    {
+        backgroundColor: "#fff",
+        height:height*0.05,
+        width:width*0.8,
+        marginLeft:width*0.1,
+       
+        borderBottomRightRadius:20,
+        
     },
     segment2:
     {
