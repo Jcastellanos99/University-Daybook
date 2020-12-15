@@ -28,7 +28,7 @@ const HomeScreen=({navigation}) => {
                 <CardItem bordered style={styles.buttonCardItem}>
                     <Segment style={styles.buttonSegment}>
                         <Text style={styles.buttonTextFirst}>Agenda</Text>
-                        <Text style={styles.buttonTextFirst}>Horario</Text>
+                        <Text style={styles.buttonTextFirst}>Calendario</Text>
                     </Segment>
                 </CardItem>
                 <CardItem bordered style={styles.buttonCardItem}>
@@ -48,7 +48,7 @@ const HomeScreen=({navigation}) => {
                     </Segment>
                 </CardItem>
             </Card>
-            <Text style={styles.resumen}>Resumen de hoy</Text>
+            <Text style={styles.resumen}>Pendientes</Text>
             <Card style={styles.card}>
                 <CardItem style={styles.cardItem}>
                     <Body style={{ flex: 1, flexDirection: "row" }}>
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
         marginLeft:width*0.0099, 
         marginRight:width*0.0099, 
         marginTop:height*0.03,
-        marginBottom:height*0.03,
+        marginBottom:height*0.045,
     },
     button:
     {
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
         color: "#000",
         marginTop: height * -0.02,
         marginLeft: width * 0.14,
-        marginRight: width * 0.15,
+        marginRight: width * 0.12,
     },
     buttonTextSecond:
     {
