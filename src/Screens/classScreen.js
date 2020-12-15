@@ -26,13 +26,10 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 
 
 
-//Importar el contexto de las notas
+//Importar el contexto de las clases
 import {AsignaturaContext} from "../context/classContext";
 
 const { width, height} = Dimensions.get("window");
-
-
-
 
 
 const ClassScreen= ({ navigation }) => {
