@@ -171,7 +171,7 @@ const dropDatabaseTableAsyncTarea = async () => {
     });
 };
 
-//Creacion de la tabla de notas
+//Creacion de la tabla de Tareas
 const setupDatabaseTableAsyncTarea = async () => {
     return new Promise((resolve, reject) => {
       db.transaction(
@@ -217,8 +217,115 @@ const setupDatabaseTableAsyncTarea = async () => {
     });
   };
 
+
+
+   //----------------------------------Tabla Examenes----------------------------------------------
+   const getTest = (setTestFunc) => {
+    db.transaction((tx) => {
+        tx.executeSql(
+            "select * from examen",
+            [],
+            (_, {rows: {_array } }) => {
+                setTestFunc(_array);
+            },
+            (_t, error) => {
+                console.log("Error al momento de obtener los examenes");
+                console.log(error);
+            },
+            (_t, _success) => {
+                console.log("Examenes Obtenidas");
+            }
+        );
+    });
+};
+
+//Insertar Tareas
+const insertTest= (name, clas, details, date, successFunc) => {
+    db.transaction((tx) => {
+        tx.executeSql("insert into examen (name, clas, details, date) values (?,?,?,?)", [
+            name,
+            clas,
+            details,
+            date,
+        ]);
+    },
+    (_t, error) => {
+        console.log("Error al insertar examenes");
+        console.log(error);
+    },
+    (_t, _success) => {
+        successFunc;
+    }
+  );
+};
+
+//Borrar la base de datos
+const dropDatabaseTableAsyncTest = async () => {
+    return new Promise((resolve, reject) => {
+      db.transaction(
+        (tx) => {
+          tx.executeSql("drop table examen");
+        },
+        (_t, error) => {
+          console.log("Error al eliminar la tabla de examenes");
+          reject(error);
+        },
+        (_t, result) => {
+          console.log("Se elimino la tabla examenes con exito");
+          resolve(result);
+        }
+      );
+    });
+};
+
+//Creacion de la tabla de examenes
+const setupDatabaseTableAsyncTest = async () => {
+    return new Promise((resolve, reject) => {
+      db.transaction(
+        (tx) => {
+          tx.executeSql(
+            "create table if not exists examen (idExamen integer primary key autoincrement, name text not null, clas text not null,  details text not null, date text not null);"
+          );
+        },
+        (_t, error) => {
+          console.log("Error al momento de crear la tabla examen");
+          console.log(error);
+          reject(error);
+        },
+        (_t, success) => {
+          console.log("Tabla examen creada!");
+          resolve(success);
+        }
+      );
+    });
+  };
+
+  const setupNotesAsyncTest = async () => {
+    return new Promise((resolve, reject) => {
+      db.transaction(
+        (tx) => {
+          tx.executeSql("insert into examen (name, clas, details, date) values (?,?,?,?)", [
+            "Primer Examen",
+            "Matematicas",
+            "Funciones Trigonometricas",
+            "28/12/2020",
+          ]);
+        },
+        (_t, error) => {
+          console.log("Error al momento de insertar los valores por defecto de examen");
+          console.log(error);
+          reject(error);
+        },
+        (_t, success) => {
+          console.log("Agregados correctamente examen");
+          resolve(success);
+        }
+      );
+    });
+  };
+
 export const database = {
-    getHomework: getAsignatura,
+    getAsignatura,
     insertAsignatura,
     dropDatabaseTableAsync,
     setupDatabaseTableAsync,
@@ -228,4 +335,9 @@ export const database = {
     dropDatabaseTableAsyncTarea,
     setupDatabaseTableAsyncTarea,
     setupNotesAsyncTarea,
+    getTest,
+    insertTest,
+    dropDatabaseTableAsyncTest,
+    setupDatabaseTableAsyncTest,
+    setupNotesAsyncTest,
 };
