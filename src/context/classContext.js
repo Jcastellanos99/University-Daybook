@@ -2,39 +2,41 @@ import React, {useEffect, createContext, useState} from "react";
 import { database } from "../components/db";
 
 //Crear el contexto de las clases
-export const ClassContext = createContext({});
+export const AsignaturaContext = createContext({});
 
-export const ClassContextProvider = (props) => {
+export const AsignaturaContextProvider = (props) => {
     //Obtener los valores iniciales para el contexto desde los props
 
-    const {class: initialClass, children} = props;
+    const {asignaturas: initialAsignaturas, children} = props;
 
     //Almacenar los valores en el estado
-    const [class_, setClass] = useState(initialClass);
+    const [asignaturas, setAsignaturas] = useState(initialAsignaturas);
+    //const [Asignatura, setAsignatura] = useState("");
 
     //Cargar u obtener las clases
     useEffect(() => {
-        refreshClass();
+        refreshAsignatura();
     }, []);
 
-    const refreshClass = () => {
-        return database.getClass(setClass);
+    const refreshAsignatura = () => {
+        return database.getAsignatura(setAsignaturas);
     };
 
-    const addNewClass = (class_) => {
-        return database.insertClass(class_, refreshClass);
+    const addNewAsignatura = async (name, score, details) => {
+        await database.insertAsignatura(name, score, details);
+        return refreshAsignatura();
     };
 
     //Crear el objeto de contexto
-    const classContext = {
-        class_,
-        addNewClass,
+    const asignaturaContext = {
+        asignaturas,
+        addNewAsignatura,
     };
 
     //Pasar los valores al proveedor y retornarlos
     return (
-        <NotesContext.Provider value={classContext}>
+        <AsignaturaContext.Provider value={asignaturaContext}>
           {children}
-        </NotesContext.Provider>
-      );
+        </AsignaturaContext.Provider>
+    );
 };
