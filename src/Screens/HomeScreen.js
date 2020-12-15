@@ -1,17 +1,26 @@
-import { Form, Icon } from "native-base";
-import React, { useEffect, useState } from "react";
+import { Content, Form, Icon } from "native-base";
+import React, { useEffect, useState, useContext } from "react";
 import {StyleSheet, View, Text, Dimensions} from "react-native";
 import {Button,
         Container,
         Segment,
         Card,
         CardItem,
-        Body
+        Body,
+        List,
+        ListItem
     } from "native-base";
 
     const { width, height} = Dimensions.get("window");
+    
+import { TestContext } from "../context/testContext";
+import {HomeworkContext} from "../context/homeworkContext";
 
 const HomeScreen=({navigation}) => {
+
+    const {tests} = useContext(TestContext);
+    const {homeworks} = useContext(HomeworkContext);
+
     return(
         <Container style={styles.container}>
             <Card style={styles.buttonCard}>
@@ -48,24 +57,38 @@ const HomeScreen=({navigation}) => {
                     </Segment>
                 </CardItem>
             </Card>
-            <Text style={styles.resumen}>Pendientes</Text>
-            <Card style={styles.card}>
-                <CardItem style={styles.cardItem}>
-                    <Body style={{ flex: 1, flexDirection: "row" }}>
-                    <View>
-                    <Text style={styles.cardText}>Horario</Text>
-                    </View>
-                    <View>
-                    
-                    </View>
-                    </Body>
-                </CardItem>
-                <CardItem style={styles.cardItem}>
-                <Button rounded style={styles.MostrarButton}>
+            <Text style={styles.resumen}>Pendientes</Text> 
+                        <Content>
+                            <List>
+                            {tests
+                            ? tests.map((test) =>(
+                                <ListItem key={test.idExamen.toString()}>
+                                    <Card style={styles.card}>
+                                            <CardItem style={styles.cardItem}>
+                                                    <Text style={styles.resumen}>{test.name }</Text>
+                                            </CardItem>                
+                                    </Card>
+                                </ListItem>
+                            ))
+                        : null}
+                        </List>
+                        <List>
+                    {homeworks
+                    ? homeworks.map((homework) =>(
+                        <ListItem key={homework.idtarea.toString()}>
+                            <Card style={styles.card}>
+                                    <CardItem style={styles.cardItem}>
+                                            <Text style={styles.resumen}>{homework.name }</Text>
+                                    </CardItem>                              
+                            </Card>
+                        </ListItem>
+                    ))
+                : null}
+                </List>
+                </Content>
+                <Button rounded onPress={() => {navigation.navigate("Tareas")}} style={styles.MostrarButton}>
                     <Text style={styles.cardText}>Mostrar Mas</Text>
                 </Button>
-                </CardItem>
-            </Card>
         </Container>
     );
 }
@@ -144,15 +167,15 @@ const styles = StyleSheet.create({
     {
         flex:1,
         backgroundColor: "#rgba(38, 196, 164, 0.89)",
-        marginLeft: width * -0.04,
+        marginBottom:height*0.01,
         marginRight: width * -0.04,
         width: width,
         height: height * 0.05,
     },
     card:
     {
-        width:width*0.98, 
-        height:height*0.20,
+        width:width*0.90, 
+        height:height*0.08,
         backgroundColor: "#fff",
         borderRadius:20,
         marginLeft:width*0.01, 
