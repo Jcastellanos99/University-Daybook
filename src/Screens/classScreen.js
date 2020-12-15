@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
         borderBottomColor: "#rgba(38, 196, 164, 0.70)",
         backgroundColor : "#F0ECEC",
         flex: 1,
-        marginTop: height*-0.10,
+        marginTop: height*-0.05,
         alignContent: "center",
     
     },
