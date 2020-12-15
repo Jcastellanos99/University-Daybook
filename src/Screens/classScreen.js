@@ -7,7 +7,11 @@ import {Container,
         Body,
         Card,
         CardItem,
-        Segment
+        Segment,
+        Item,
+        Right,
+        Button,
+        Header
         } from "native-base";
 import React, {useContext, 
                useEffect, 
@@ -15,7 +19,11 @@ import React, {useContext,
 import {StyleSheet, 
         View, 
         Text,
-        Dimensions} from "react-native";
+        Dimensions,
+        } from "react-native";
+
+import { TouchableOpacity } from "react-native-gesture-handler";
+
 
 
 //Importar el contexto de las notas
@@ -25,16 +33,34 @@ const { width, height} = Dimensions.get("window");
 
 
 
+
+
 const ClassScreen= ({ navigation }) => {
     const {asignaturas} = useContext(AsignaturaContext);
+
+    const nextPage = () => {
+        navigation.navigate("Agregar Asignatura");
+    }
+
+    console.log(asignaturas);
+
 
 
     return(
         <Container style={styles.container}>
+            <Header transparent >                   
+                    <Button rounded onPress={(nextPage)} style={styles.button} >
+                        <Text style={styles.buttonText}>
+                            Agregar Asignatura
+                        </Text>
+                        <Icon style={{color:"#000"}} name="add"/>
+                    </Button>
+            </Header>
             <Content>
                 <List>
                     {asignaturas
                     ? asignaturas.map((asignatura) =>(
+                        <TouchableOpacity onPress={(nextPage)}>
                         <ListItem key={asignatura.idClass.toString()}>
                             <Card style={styles.card}>
                                 <Segment style={styles.segment}>
@@ -47,6 +73,7 @@ const ClassScreen= ({ navigation }) => {
                                 </Segment>                             
                             </Card>
                         </ListItem>
+                        </TouchableOpacity>
                     ))
                 : null}
                 </List>               
@@ -88,6 +115,26 @@ const styles = StyleSheet.create({
         color: "#000",
        
     },
+    button:
+    {
+        borderBottomColor: "#rgba(38, 196, 164, 0.70)",
+        backgroundColor : "#F0ECEC",
+        flex: 1,
+        marginTop: width*-0.10,
+        marginLeft: width*0.50,
+        alignContent: "center",
+    
+    },
+    text:
+    {
+        fontSize: 28,
+        marginLeft: width*0.05,
+    },
+    buttonText:
+    {
+        fontSize: 15,
+        marginLeft: width*0.05,
+    }
 })
 
 
