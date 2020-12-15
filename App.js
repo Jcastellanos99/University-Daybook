@@ -55,20 +55,12 @@ export default function App({navigation}) {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="homeScreen">
         <Stack.Screen name="homeScreen" component={HomeScreen} 
-        options={{headerTitle: props=> <LogoTitle {...props}/>, headerStyle: {backgroundColor: "#12B191",}}} />
-        <Stack.Screen name="Tareas" component={AgendaScreen} options={{headerStyle: {backgroundColor: "#12B191"}}}/>
-        <Stack.Screen name="Horario" component={ScheduleScreen} options={{headerStyle: {backgroundColor: "#12B191"}}}  />
-        <Stack.Screen name="Calcular" component={CalculateScreen} options={{headerStyle: {backgroundColor: "#12B191"}}}/>
-        <Stack.Screen name="Asignatura" component={ClassScreen}  
-        options={{headerStyle: {backgroundColor: "#12B191"}, headerRight: () => (
-          <Button
-            onPress={() => alert('This is a button!')}
-            title="add"
-            Icon="add"
-            color="#fff"
-          />),
-        }}/>
-        <Stack.Screen name="Examenes" component={TestScreen} options={{headerStyle: {backgroundColor: "#12B191"}}}/>
+        options={{headerTitle: props=> <LogoTitle {...props}/>, headerStyle: {backgroundColor: "#12B191"}, headerTintColor: "#fff"}} />
+        <Stack.Screen name="Tareas" component={AgendaScreen} options={{headerStyle: {backgroundColor: "#12B191"}, headerTintColor: "#fff"}}/>
+        <Stack.Screen name="Horario" component={ScheduleScreen} options={{headerStyle: {backgroundColor: "#12B191"}, headerTintColor: "#fff"}}  />
+        <Stack.Screen name="Calcular" component={CalculateScreen} options={{headerStyle: {backgroundColor: "#12B191"}, headerTintColor: "#fff"}}/>
+        <Stack.Screen name="Asignatura" component={ClassScreen} options={{headerStyle: {backgroundColor: "#12B191"}, headerTintColor: "#fff"}}/>
+        <Stack.Screen name="Examenes" component={TestScreen} options={{headerStyle: {backgroundColor: "#12B191"}, headerTintColor: "#fff"}}/>
         <Stack.Screen name="Agregar Asignatura" component={AddClassScreen} options={{headerStyle: {backgroundColor: "#12B191"}, headerTintColor: "#fff"}}/>
         <Stack.Screen name="Agregar Tarea" component={AddHomeworkScreen} options={{headerStyle: {backgroundColor: "#12B191"}, headerTintColor: "#fff"}}/>
         <Stack.Screen name="Agregar Examen" component={AddTestScreen} options={{headerStyle: {backgroundColor: "#12B191"}, headerTintColor: "#fff"}}/>
