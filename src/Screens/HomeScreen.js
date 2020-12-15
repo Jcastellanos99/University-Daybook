@@ -17,7 +17,7 @@ const HomeScreen=({navigation}) => {
             <Card style={styles.buttonCard}>
                 <CardItem bordered style={styles.buttonCardItem}>
                     <Segment style={styles.buttonSegment}>
-                        <Button rounded onPress={() => {navigation.navigate("Agenda")}} style={styles.button}>
+                        <Button rounded onPress={() => {navigation.navigate("Tareas")}} style={styles.button}>
                             <Icon style={styles.icon} name="book"/> 
                         </Button>
                         <Button rounded onPress={() => {navigation.navigate("Horario")}} style={styles.button}>
